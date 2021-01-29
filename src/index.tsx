@@ -2,6 +2,19 @@ import { useEffect, useState, useRef } from 'react';
 import ReactDom from 'react-dom';
 import * as esBuild from 'esbuild-wasm';
 import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
+import { unpkgFetchPlugin } from './plugins/unpkg-fetch-plugin';
+
+
+/*
+1. Code Transplie and bundle in browser using EsBuild
+  Execute code provided in string format safely
+
+2. Dyanamic package loading with versioning from NPM
+3. In Browser Caching using indexDb to boost performance while loading packages
+4. Load css modules from NPM
+
+
+*/
 
 const App = () => {
   const [input, setInput] = useState('');
@@ -27,7 +40,7 @@ const App = () => {
       entryPoints: ['index.js'],
       bundle: true,
       write: false,
-      plugins: [unpkgPathPlugin()],
+      plugins: [unpkgPathPlugin(), unpkgFetchPlugin(input)],
       define: {
         'process.env.NODE_ENV': '"production"',
         global: 'window'
