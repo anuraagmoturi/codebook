@@ -10,24 +10,45 @@ export const unpkgFetchPlugin = (inputCode: string) => {
   return {
     name: 'unpkg-fetch-plugin',
     setup(build: esbuild.PluginBuild) {
+      build.onLoad({ filter: /(^index\.js$)/ }, () => {
+        return {
+          loader: 'jsx',
+          contents: inputCode
+        };
+      });
+
       build.onLoad({ filter: /.*/ }, async (args: any) => {
-        console.log('onLoad', args);
-
-        if (args.path === 'index.js') {
-          return {
-            loader: 'jsx',
-            contents: inputCode
-          };
-        }
-
         const cached = await fileCache.getItem<esbuild.OnLoadResult>(args.path);
         if (cached)
           return cached;
+      });
 
+      build.onLoad({ filter: /.css$/ }, async (args: any) => {
         const { data, request } = await axios.get(args.path);
+        const escaped = data
+          .replace(/\n/g, '')
+          .replace(/"/g, '\\"')
+          .replace(/'/g, "\\'");
 
-        const fileType = args.path.match(/.css$/) ? 'css' : 'jsx';
-        // const content = fileType === 'css' ? 
+        const contents = `
+          const style = document.createElement('style');
+          style.innerText = '${escaped}';
+          document.head.appendChild(style);
+        `;
+
+        const result: esbuild.OnLoadResult = {
+          loader: 'jsx',
+          contents: contents,
+          resolveDir: new URL('./', request.responseURL).pathname
+        };
+
+        fileCache.setItem(args.path, result);
+        return result;
+
+      });
+
+      build.onLoad({ filter: /.*/ }, async (args: any) => {
+        const { data, request } = await axios.get(args.path);
 
         const result: esbuild.OnLoadResult = {
           loader: 'jsx',
