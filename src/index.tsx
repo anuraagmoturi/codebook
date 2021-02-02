@@ -1,9 +1,6 @@
-import { useEffect, useState, useRef } from 'react';
+import 'bulmaswatch/superhero/bulmaswatch.min.css';
 import ReactDom from 'react-dom';
-import * as esBuild from 'esbuild-wasm';
-import { unpkgPathPlugin } from './plugins/unpkg-path-plugin';
-import { unpkgFetchPlugin } from './plugins/unpkg-fetch-plugin';
-
+import CodeCell from './components/code-cell';
 
 /*
 1. Code Transplie and bundle in browser using EsBuild
@@ -19,74 +16,9 @@ import { unpkgFetchPlugin } from './plugins/unpkg-fetch-plugin';
 */
 
 const App = () => {
-  const [input, setInput] = useState('');
-  const ref = useRef<any>();
-  const iframe = useRef<any>();
 
-  useEffect(() => {
-    startService();
-  }, [])
-
-  const startService = async () => {
-    ref.current = await esBuild.startService({
-      worker: true,
-      wasmURL: 'https://unpkg.com/esbuild-wasm@0.8.27/esbuild.wasm'
-    });
-  }
-
-  const onClick = async () => {
-    if (!ref.current)
-      return;
-
-    const bundle = await ref.current.build({
-      entryPoints: ['index.js'],
-      bundle: true,
-      write: false,
-      plugins: [unpkgPathPlugin(), unpkgFetchPlugin(input)],
-      define: {
-        'process.env.NODE_ENV': '"production"',
-        global: 'window'
-      }
-    });
-
-    //   Transpile 
-    // const result = await ref.current.transform(bundle, {
-    //   loader: 'jsx',
-    //   target: 'es2015'
-    // });
-
-    // setCode(bundle.outputFiles[0].text);
-
-    iframe.current.srcdoc = html;
-    iframe.current.contentWindow.postMessage(bundle.outputFiles[0].text, '*');
-  }
-
-  const html = `
-    <html>
-      <head></head>
-        <body>
-          <div id="root"></div>
-          <script>
-            window.addEventListener('message', (event) => {
-              try{
-                eval(event.data);
-              }catch(err){
-                const root = document.querySelector('#root');
-                root.innerHTML = '<div style="color: red;"><h4>Runtime Error</h4>'+ err + '</div>'
-                console.error(err);
-              }
-            }, false)
-          </script>
-        </body>
-    </html>
-  `
   return <div>
-    <textarea value={input} onChange={e => setInput(e.target.value)}></textarea>
-    <div>
-      <button onClick={onClick}>Submit</button>
-    </div>
-
-    <iframe title="preview" ref={iframe} sandbox="allow-scripts" srcDoc={html} />
+    <CodeCell />
   </div>
 }
 
