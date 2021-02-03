@@ -1,6 +1,7 @@
 import 'bulmaswatch/superhero/bulmaswatch.min.css';
 import ReactDom from 'react-dom';
 import CodeCell from './components/code-cell';
+import TextEditor from './components/text-editor';
 
 /*
 1. Code Transplie and bundle in browser using EsBuild
@@ -12,13 +13,15 @@ import CodeCell from './components/code-cell';
  - user might change Dom node
  - handle malicious code
 
+challenges:
+solve conflicting css by using - unset !important;
 
 */
 
 const App = () => {
 
   return <div>
-    <CodeCell />
+    <TextEditor />
   </div>
 }
 
