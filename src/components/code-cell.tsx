@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import CodeEditor from './code-editor';
 import Preview from './preview';
 import EsBuild from '../bundler';
@@ -13,17 +13,29 @@ import Resizable from './resizable';
  - user code errors
  - user might change Dom node
  - handle malicious code
-
+6. Add debounce logic to bundle and execute user's code
 
 */
 
 const CodeCell: React.FC = () => {
   const [input, setInput] = useState('');
   const [code, setCode] = useState('');
+  const [error, setError] = useState('');
 
-  const onClick = async () => {
-    const bundle = await EsBuild(input);
-    setCode(bundle);
+  useEffect(() => {
+    let timer = setTimeout(async () => {
+      const bundle = await EsBuild(input);
+      setCode(bundle.code);
+      setError(bundle.error);
+    }, 500);
+
+    return () => {
+      clearTimeout(timer);
+    }
+  }, [input]);
+
+  const onChange = (value: string) => {
+    setInput(value);
   }
 
   return <Resizable direction={'vertical'}>
@@ -31,7 +43,7 @@ const CodeCell: React.FC = () => {
       <Resizable direction={'horizontal'}>
         <CodeEditor
           initialValue="console.log('hi there');"
-          onChange={(value) => setInput(value)}
+          onChange={onChange}
         />
       </Resizable>
 
@@ -40,7 +52,7 @@ const CodeCell: React.FC = () => {
         <button onClick={onClick}>Submit</button>
       </div> */}
 
-      <Preview code={code} />
+      <Preview code={code} error={error} />
     </div>
   </Resizable>
 
