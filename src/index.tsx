@@ -1,9 +1,9 @@
 import 'bulmaswatch/superhero/bulmaswatch.min.css';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import ReactDom from 'react-dom';
-import CodeCell from './components/code-cell';
-import TextEditor from './components/text-editor';
 import { Provider } from 'react-redux';
 import { store } from './state';
+import CellList from './components/cell-list';
 
 /*
 1. Code Transplie and bundle in browser using EsBuild
@@ -14,7 +14,7 @@ import { store } from './state';
  - user code errors
  - user might change Dom node
  - handle malicious code
-6. Simplify Redux state updates with Immer
+6. Simplify Redux state mutations with Immer
 
 challenges:
 solve conflicting css by using - unset !important;
@@ -25,7 +25,7 @@ const App = () => {
 
   return <Provider store={store}>
     <div>
-      <TextEditor />
+      <CellList />
     </div>
   </Provider>
 }
