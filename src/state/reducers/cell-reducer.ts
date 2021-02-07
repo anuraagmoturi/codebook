@@ -33,7 +33,7 @@ const reducer = produce((state: CellState = initialState, action: Action) => {
     case ActionType.UPDATE_CELL:
       state.data[action.payload.id].content = action.payload.content;
       return state;
-    case ActionType.INSERT_CELL_BEFORE:
+    case ActionType.INSERT_CELL_AFTER:
       const cell: Cell = {
         id: randomId(),
         type: action.payload.type,
@@ -43,9 +43,9 @@ const reducer = produce((state: CellState = initialState, action: Action) => {
       state.data[cell.id] = cell;
       const foundIdx = state.order.findIndex(id => id === action.payload.id);
       if (foundIdx !== -1)
-        state.order.splice(foundIdx, 0, cell.id)
+        state.order.splice(foundIdx - 1, 0, cell.id)
       else
-        state.order.push(cell.id);
+        state.order.unshift(cell.id);
       return state;
     case ActionType.DELETE_CELL:
       delete state.data[action.payload.id];
