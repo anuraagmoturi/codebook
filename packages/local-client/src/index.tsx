@@ -15,6 +15,7 @@ import CellList from './components/cell-list';
  - user might change Dom node
  - handle malicious code
 6. Simplify Redux state mutations with Immer
+7. Use lerna to manage multiple npm packages project
 
 challenges:
 solve conflicting css by using - unset !important;
