@@ -1,2 +1,2 @@
-(this["webpackJsonp@js-code-runner/local-client"]=this["webpackJsonp@js-code-runner/local-client"]||[]).push([[406],{572:function(s,e){Prism.languages.t4=Prism.languages["t4-cs"]=Prism.languages["t4-templating"].createT4("csharp")}}]);
+(this["webpackJsonp@eingress-js-runner/local-client"] = this["webpackJsonp@eingress-js-runner/local-client"] || []).push([[406], { 572: function (s, e) { Prism.languages.t4 = Prism.languages["t4-cs"] = Prism.languages["t4-templating"].createT4("csharp") } }]);
 //# sourceMappingURL=406.accbc5d7.chunk.js.map

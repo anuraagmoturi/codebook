@@ -1,2 +1,2 @@
-(this["webpackJsonp@js-code-runner/local-client"]=this["webpackJsonp@js-code-runner/local-client"]||[]).push([[24],{190:function(n,e){Prism.languages.arff={comment:/%.*/,string:{pattern:/(["'])(?:\\.|(?!\1)[^\\\r\n])*\1/,greedy:!0},keyword:/@(?:attribute|data|end|relation)\b/i,number:/\b\d+(?:\.\d+)?\b/,punctuation:/[{},]/}}}]);
+(this["webpackJsonp@eingress-js-runner/local-client"] = this["webpackJsonp@eingress-js-runner/local-client"] || []).push([[24], { 190: function (n, e) { Prism.languages.arff = { comment: /%.*/, string: { pattern: /(["'])(?:\\.|(?!\1)[^\\\r\n])*\1/, greedy: !0 }, keyword: /@(?:attribute|data|end|relation)\b/i, number: /\b\d+(?:\.\d+)?\b/, punctuation: /[{},]/ } } }]);
 //# sourceMappingURL=24.37e7116b.chunk.js.map

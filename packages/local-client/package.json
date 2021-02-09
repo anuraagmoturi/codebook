@@ -1,5 +1,5 @@
 {
-  "name": "@js-code-runner/local-client",
+  "name": "@eingress-js-runner/local-client",
   "version": "1.0.1",
   "publishConfig": {
     "access": "public"

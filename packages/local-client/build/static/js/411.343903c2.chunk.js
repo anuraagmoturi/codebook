@@ -1,2 +1,2 @@
-(this["webpackJsonp@js-code-runner/local-client"]=this["webpackJsonp@js-code-runner/local-client"]||[]).push([[411],{577:function(e,n){Prism.languages["t4-vb"]=Prism.languages["t4-templating"].createT4("vbnet")}}]);
+(this["webpackJsonp@eingress-js-runner/local-client"] = this["webpackJsonp@eingress-js-runner/local-client"] || []).push([[411], { 577: function (e, n) { Prism.languages["t4-vb"] = Prism.languages["t4-templating"].createT4("vbnet") } }]);
 //# sourceMappingURL=411.343903c2.chunk.js.map

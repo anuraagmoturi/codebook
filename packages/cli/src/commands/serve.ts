@@ -1,6 +1,6 @@
 import path from 'path';
 import { Command } from 'commander';
-import { serve } from '@js-code-runner/local-api';
+import { serve } from '@eingress-js-runner/local-api';
 
 const isProduction = process.env.NODE_ENV === 'production';
 

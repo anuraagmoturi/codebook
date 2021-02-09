@@ -1,5 +1,5 @@
 {
-  "name": "@js-code-runner/cli",
+  "name": "eingress-js-runner",
   "version": "1.0.1",
   "description": "",
   "files": [
@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@js-code-runner/local-api": "^1.0.1"
+    "@eingress-js-runner/local-api": "^1.0.1"
   },
   "devDependencies": {
     "@types/node": "^14.14.25",

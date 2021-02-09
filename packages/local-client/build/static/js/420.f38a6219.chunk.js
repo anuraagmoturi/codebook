@@ -1,2 +1,2 @@
-(this["webpackJsonp@js-code-runner/local-client"]=this["webpackJsonp@js-code-runner/local-client"]||[]).push([[420],{586:function(s,e){var n=Prism.util.clone(Prism.languages.typescript);Prism.languages.tsx=Prism.languages.extend("jsx",n)}}]);
+(this["webpackJsonp@eingress-js-runner/local-client"] = this["webpackJsonp@eingress-js-runner/local-client"] || []).push([[420], { 586: function (s, e) { var n = Prism.util.clone(Prism.languages.typescript); Prism.languages.tsx = Prism.languages.extend("jsx", n) } }]);
 //# sourceMappingURL=420.f38a6219.chunk.js.map
