@@ -1,5 +1,5 @@
 {
-  "name": "js-code-runner",
+  "name": "@js-code-runner/cli",
   "version": "1.0.0",
   "description": "",
   "files": [
@@ -25,5 +25,6 @@
     "commander": "^7.0.0",
     "esbuild": "0.8.26",
     "typescript": "^4.1.3"
-  }
+  },
+  "gitHead": "37011ab62acbf7fac3376e1d1d9d93742875966e"
 }
