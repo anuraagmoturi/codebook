@@ -1,5 +1,5 @@
 {
-  "name": "root",
+  "name": "js-code-runner",
   "private": true,
   "scripts": {
     "start": "lerna run start --parallel"
